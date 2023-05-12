@@ -1,9 +1,14 @@
 import PropTypes from 'prop-types';
 
-const ControlPanel = ({ name, onChange }) => {
+type ControlPanelProps = {
+  name: string;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+};
+
+const ControlPanel = (prop: ControlPanelProps) => {
   return (
     <form
-      className="flex flex-row gap-4 text-white bg-primary-10"
+      className="bg-primary-10 flex flex-row gap-4 text-white"
       onSubmit={(event) => event.preventDefault()}
     >
       <div>
@@ -12,8 +17,8 @@ const ControlPanel = ({ name, onChange }) => {
           name="name"
           className="w-full"
           type="text"
-          value={name}
-          onChange={onChange}
+          value={prop.name}
+          onChange={prop.onChange}
         />
       </div>
     </form>
